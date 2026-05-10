@@ -32,7 +32,8 @@ func main() {
 
 		b, err := ref.Open()
 		if err != nil {
-			fmt.Printf("  Failed to open bus: %v", err)
+			fmt.Printf("  Failed to open bus: %v\n", err)
+			continue
 		}
 
 		fmt.Println("  pins:")
