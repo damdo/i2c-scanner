@@ -23,6 +23,8 @@ I2C buses available:
   pins:
    * SDA: I2C0_SDA(GPIO0)
    * SCL: I2C0_SCL(GPIO1)
+  devices:
+   * addr: 0x39 (57)
 
 - name: /dev/i2c-1
   number: 1
@@ -30,6 +32,13 @@ I2C buses available:
   pins:
    * SDA: I2C1_SDA(GPIO2)
    * SCL: I2C1_SCL(GPIO3)
+  devices:
+   * addr: 0x37 (55)
+   * addr: 0x3A (58)
+   * addr: 0x4A (74)
+   * addr: 0x4B (75)
+   * addr: 0x50 (80)
+   * addr: 0x54 (84)
 
 - name: /dev/i2c-2
   number: 2
@@ -37,6 +46,7 @@ I2C buses available:
   pins:
    * SDA: INVALID
    * SCL: INVALID
+  devices: none found
 
 - name: /dev/i2c-3
   number: 3
@@ -44,6 +54,7 @@ I2C buses available:
   pins:
    * SDA: INVALID
    * SCL: INVALID
+  devices: none found
 ```
 
 ### credits
