@@ -32,7 +32,8 @@ func main() {
 
 		b, err := ref.Open()
 		if err != nil {
-			fmt.Printf("  Failed to open bus: %v", err)
+			fmt.Printf("  Failed to open bus: %v\n", err)
+			continue
 		}
 
 		fmt.Println("  pins:")
@@ -41,8 +42,27 @@ func main() {
 			fmt.Printf("   * SCL: %s\n", p.SCL())
 		}
 
+		var devices []uint8
+		for addr := uint8(0x03); addr <= 0x77; addr++ {
+			// Check whether i2c address is alive by sending 1 null byte and trying to read back
+			write := []byte{0x00}
+			read := make([]byte, 1)
+			if err := b.Tx(uint16(addr), write, read); err == nil {
+				devices = append(devices, addr)
+			}
+		}
+
+		if len(devices) > 0 {
+			fmt.Println("  devices:")
+			for _, d := range devices {
+				fmt.Printf("   * addr: 0x%02X (%d)\n", d, d)
+			}
+		} else {
+			fmt.Println("  devices: none found")
+		}
+
 		if err := b.Close(); err != nil {
-			fmt.Printf("  Failed to close bus: %v", err)
+			fmt.Printf("  Failed to close bus: %v\n", err)
 		}
 
 		fmt.Println()
