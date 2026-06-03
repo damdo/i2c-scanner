@@ -1,6 +1,8 @@
 module github.com/damdo/i2c-scanner
 
-go 1.20
+go 1.22.6
+
+toolchain go1.24.8
 
 require (
 	periph.io/x/conn/v3 v3.7.2
